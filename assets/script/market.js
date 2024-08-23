@@ -78,16 +78,19 @@ function createCards(filter) {
 			button.style.display = "block";
 		});
 
-		button.addEventListener("click", (event) => {
-			if (!("quantity" in element)) {
-				element["quantity"] = 1;
-				basked.push(element);
-				localStorage.setItem("basked", JSON.stringify(basked));
-			} else {
-				element["quantity"] += 1;
-				localStorage.setItem("basked", JSON.stringify(basked));
-			}
-		});
+		button.addEventListener("click", () => {
+            if (!("quantity" in element)) {
+                element["quantity"] = 1;
+                basked.push(element);
+            } else {
+                element["quantity"] += 1;
+            }
+            localStorage.setItem("basked", JSON.stringify(basked));
+            button.classList.add("added");
+            setTimeout(() => button.classList.remove("added"), 500);
+            updateCartDisplay(); // Update the cart display
+        });
+		
 
 		// Append Name, Ingredients & Price to the Content Div
 		content.appendChild(name);
@@ -109,29 +112,29 @@ function createCards(filter) {
 filteredCatagoryCards(filterCatagoryList);
 
 function filteredCatagoryCards(filterList) {
-	const filteredArray = collections.filter(function (element) {
-		if (filterList.length === 0) {
-			return element;
-		}
-		if (filterList.every((i) => element.category.includes(i))) {
-			return element;
-		}
-	});
-	clearDivChilds(container);
-	createCards(filteredArray);
+    const filteredArray = collections.filter(function (element) {
+        if (filterList.length === 0) {
+            return element;
+        }
+        if (filterList.every((i) => element.category.includes(i))) {
+            return element;
+        }
+    });
+    clearDivChilds(container);
+    createCards(filteredArray);
 }
 
 function filteredNameCards(filterList) {
-	const filteredArray = collections.filter(function (element) {
-		if (filterList.length === 0) {
-			return element;
-		}
-		if (element.name.includes(filterList)) {
-			return element;
-		}
-	});
-	clearDivChilds(container);
-	createCards(filteredArray);
+    const filteredArray = collections.filter(function (element) {
+        if (filterList.length === 0) {
+            return element;
+        }
+        if (element.name.includes(filterList)) {
+            return element;
+        }
+    });
+    clearDivChilds(container);
+    createCards(filteredArray);
 }
 
 function filterEventListener(checkbox, filter) {
@@ -146,16 +149,28 @@ function filterEventListener(checkbox, filter) {
 	});
 }
 
+function updateCartDisplay() {
+    const cartButton = document.querySelector(".cart-button");
+    if (cartButton) {
+        const cartQuantity = basked.reduce((acc, item) => acc + (item.quantity || 0), 0);
+        cartButton.setAttribute("data-quantity", cartQuantity);
+    } else {
+        console.error("Cart button not found!");
+    }
+}
+
+updateCartDisplay();
+
+
 const search = document.querySelector(".search");
 search.addEventListener("keydown", (event) => {
-	if (event.key === "Enter") {
-		console.log("Enter");
-		filterNameList = search.value;
-	} else if (event.key === "Backspace") {
-		filterNameList = "";
-	}
-	console.log(filterNameList);
-	filteredNameCards(filterNameList);
+    if (event.key === "Enter") {
+        filterNameList = search.value;
+        filteredNameCards(filterNameList);
+    } else if (event.key === "Backspace") {
+        filterNameList = "";
+        filteredNameCards(filterNameList);
+    }
 });
 
 const vegi = document.getElementById("vegi_checkbox");

@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     let basked = JSON.parse(localStorage.getItem('basked'));
+    const showTv = document.querySelector('.main_wrapper');
+    const showPage = document.querySelector('.checkout-container');
 
     function checkCart() {
         if (!basked || basked.length === 0) {
-            alert('Ur cart is empty. First add items to your cart.');
-            window.location.href = 'market.html';
+            showTv.style.display = 'flex';
+            showPage.style.display = 'none';
+            setTimeout(function() {
+                alert('Ur cart is empty. First add items to your cart.');
+                window.location.href = 'market.html';
+            }, 2000); 
+        } else {
+            showTv.style.display = 'none';
+            showPage.style.display = 'flex';
         }
     }
 
@@ -12,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const orderSummary = document.getElementById('order-summary');
     const purchaseBtn = document.getElementById('purchase-button');
+    const clearCard = document.getElementById('clear-card');
 
     function shippingDetails() {
         const userName = document.getElementById('name').value;
@@ -211,4 +221,19 @@ document.addEventListener('DOMContentLoaded', () => {
             window.alert('Shipping Details is require');
         }
     });
+
+    clearCard.addEventListener('click', (e) => {
+        const alertConfirm = window.confirm("Are u sure u want to clear card");
+        if (alertConfirm) {
+            localStorage.removeItem('basked');
+            showTv.style.display = 'flex';
+            showPage.style.display = 'none';
+            setTimeout(function() {
+                alert('Ur cart is empty. First add items to your cart.');
+                window.location.href = 'market.html';
+            }, 2000); 
+        } else {
+            return;
+        }
+    })
 });
