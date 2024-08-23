@@ -62,6 +62,7 @@ body.dark-mode {
 .slider {
     position: absolute;
     cursor: pointer;
+    border: 1px solid #e2e0e0;
     top: 0;
     left: 0;
     right: 0;
