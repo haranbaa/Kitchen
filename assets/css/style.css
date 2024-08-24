@@ -634,3 +634,27 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
+
+.sign a, .profile a {
+    text-decoration: none;
+    color: #000;
+}
+
+.signIn, .profile {
+    padding: 9px 17px;
+    font-size: 17px;
+    border-radius: 15px;
+    border: none;
+    background-color: orange;
+}
+
+.profile {
+    margin: 0 10px;
+    color:  #5d176b;
+    color:  #702619;
+    color:  #12595c;
+    color:  #19704c;
+    color:  #1e1e1e;
+}
+

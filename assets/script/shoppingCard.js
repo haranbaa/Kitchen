@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
       showTv.style.display = "flex";
       showPage.style.display = "none";
       setTimeout(function () {
-        alert("Ur cart is empty. First add items to your cart.");
-        window.location.href = "market.html";
+        //alert("Ur cart is empty. First add items to your cart.");
+        //window.location.href = "market.html";
       }, 2000);
     } else {
       showTv.style.display = "none";
