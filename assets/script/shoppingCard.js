@@ -49,13 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadShippingDetails() {
     const userData = JSON.parse(localStorage.getItem("shippingInfo"));
     if (userData) {
-      document.getElementById("name").value = userData.userName;
-      document.getElementById("email").value = userData.email;
-      document.getElementById("region").value = userData.region;
-      document.getElementById("city").value = userData.city;
-      document.getElementById("zip").value = userData.zip;
-      document.getElementById("street").value = userData.street;
-      document.getElementById("street-number").value = userData.streetNumber;
+      document.getElementById("name").value = userData.userName || "";
+      document.getElementById("email").value = userData.email || "";
+      document.getElementById("region").value = userData.region || "";
+      document.getElementById("city").value = userData.city || "";
+      document.getElementById("zip").value = userData.zip || "";
+      document.getElementById("street").value = userData.street || "";
+      document.getElementById("street-number").value = userData.streetNumber || "";
     } else {
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showPage.style.display = "none";
       setTimeout(function () {
         alert("Ur cart is empty. First add items to your cart.");
-        window.location.href = "market.html";
+        // window.location.href = "market.html";
       }, 2000);
     } else {
       return;

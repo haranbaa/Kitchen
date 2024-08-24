@@ -647,6 +647,7 @@ header {
     border-radius: 15px;
     border: none;
     background-color: orange;
+    cursor: pointer;
 }
 
 .signIn {

@@ -114,6 +114,7 @@ const profileBtn = document.querySelector('.profile');;
 let userLogIn = localStorage.getItem('logIn');
 
 if(logIn && logOut) {
+  console.log('test');
   if (userLogIn === 'true') {
     logIn.style.display = 'none';
     logOut.style.display = 'inline-block';

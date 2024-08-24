@@ -168,6 +168,9 @@ passwordTwo.forEach((pw2, index) => {
     });
 });
 
+//after register submit user need to log in with used data from register and brind to home page
+
+
 const submitToRegister = (e) => {
     e.preventDefault();
 
@@ -209,7 +212,10 @@ const submitToRegister = (e) => {
         passwordTwo: pw2.value
     };
     localStorage.setItem("shippingInfo", JSON.stringify(shippingInfo));
-  
+    
+    localStorage.setItem('logIn', 'true');
+    window.location.href = "index.html";
+
     return shippingInfo;
 };
 
