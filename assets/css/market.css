@@ -173,27 +173,72 @@ label:hover {
     margin-right: 10px;
 }
 
+
+
 .addItem {
-    width: 50px;
-    margin-left: calc(var(--cardWidth) - 60px);
-    margin-top: -8px;
-    background-color: orange;
-    border: 1.5px rgb(0, 0, 0) solid;
-    text-align: center;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-}
-
-.addItem:hover {
+    position: relative;
+    top: -15px;
+    left: 50px;
+    width: 148px;
+    height: 40px;
     cursor: pointer;
-    transform: scale(1.1);
-    box-shadow: 0px 0px 2px black;
-}
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: orange;
+  }
+  
+  .addItem, .button__icon, .button__text {
+    transition: all 0.3s;
+  }
+  
+  .addItem .button__text {
+    transform: translateX(30px);
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .addItem .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: #0066CC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .addItem .svg {
+    width: 30px;
+    stroke: #fff;
+  }
+  
+  .addItem:hover {
+    background: orange;
+  }
+  
+  .addItem:hover .button__text {
+    color: transparent;
+  }
+  
+  .addItem:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+  }
+  
+  .addItem:active .button__icon {
+    background-color: #ffffff;
+  }
+  
+  .addItem:active {
+    border: 1px solid #2e8644;
+  }
 
-.addItem.added {
+  .addItem.added {
     animation: addToCartAnimation 0.5s ease;
-    background-color: lightgreen;
-}
+    background-color: orange;
+} 
 
 @keyframes addToCartAnimation {
     0% {
