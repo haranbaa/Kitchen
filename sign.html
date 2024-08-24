@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/sign.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="assets/img/logo.webp" alt="Food Corner Logo"></a>
+        </div>
+
+        <div class="containerHeader">
+            <label class="toggle">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form id="logForm">
+                <h2>Login</h2>
+                <div class="inputBox">
+                    <input type="text" placeholder="Username" class="inputTxt">
+                </div>
+                <div class="inputBox">
+                    <input type="password" placeholder="Password" class="inputTxt">
+                </div>
+                <div class="inputBox group">
+                    <a href="#" id="signupForget">Forgot Password</a>
+                    <a href="#" id="signup">Signup</a>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Let's go" id="submitLogIn">
+                </div>
+            </form>
+
+            <form id="signForm" style="display: none;">
+                <h2>Registration</h2>
+                <div class="inputBox">
+                    <input type="text" placeholder="Username" class="userName inputTxt" >
+                </div>
+                <div class="inputBox">
+                    <input type="text" placeholder="Email Address" class="emailName inputTxt"  >
+                </div>
+                <div class="inputBox">
+                    <input type="password" placeholder="Create Password"  class="passwordOne inputTxt" >
+                    <p class="passLengthOne">At least 8 characters</p>
+                </div>
+                <div class="inputBox">
+                    <input type="password" placeholder="Confirm Password"  class="passwordTwo inputTxt" >
+                    <p class="passLengthTwo">Must be equal</p>
+                </div>
+                <div class="inputBox">
+                    <input type="submit" value="Register" id="submitRegister">
+                </div>
+                <div class="inputBox group">
+                    <a href="#" id="signIn"> Already Have an Account? Login</a>
+                </div>
+            </form>
+
+
+            <form id="forgotLog" style="display: none;">
+                <h2>Registration</h2>
+                <div class="inputBox">
+                    <input type="text" placeholder="Email Address" class="inputTxt">
+                </div>
+                    <input type="submit" value="Send" class="sendOut" id="submitForgot">
+                    <a href="#" id="signInOut">Log In</a>
+                </div>
+            </form>
+
+            <form id="forgotLogSuccess" style="display: none;">
+                <h2>New Password</h2>
+                <div class="inputBox">
+                    <div class="inputBox">
+                        <input type="password" placeholder="Create Password"  class="passwordOne inputTxt" >
+                        <p class="passLengthOne">At least 8 characters</p>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Confirm Password"  class="passwordTwo inputTxt" >
+                        <p class="passLengthTwo">Must be equal</p>
+                    </div>
+                    <input type="submit" value="Save" class="sendSave" id="submitSave">
+                    <!-- <a href="#" id="signInOut">Log In</a> -->
+                </div>
+            </form>
+
+        </div>
+    </main>
+    <script type="module" src="assets/script/script.js"></script>
+    <script type="module" src="assets/script/sign.js"></script>
+</body>
+</html>

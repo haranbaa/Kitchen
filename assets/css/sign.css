@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #19704c;
+    background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    /* background-image: url("https://www.transparenttextures.com/patterns/gravel.png"); */
+    background-position: center;
+    animation: backgroundMove 25s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(238, 251, 255);
+}
+a:hover {
+    text-decoration: underline;
+    color: rgb(172, 191, 199);
+}
+
+#logForm, #signForm, #forgotLog, #forgotLogSuccess {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    transition: all 0.5s ease-in-out;
+    border: 1px rgba(184, 184, 184, 0.466) solid;
+}
+
+#signForm {
+    width: 350px;
+    height: 510px;
+}
+
+#forgotLog {
+    width: 350px;
+    height: 250px;
+}
+#forgotLogSuccess {
+    width: 350px;
+    height: 310px;
+}
+
+#logForm:hover, #signForm:hover, #forgotLog:hover, #forgotLogSuccess:hover {
+    transform: scale(1.1);
+    border: 1px rgb(184, 184, 184) solid;
+    box-shadow: 1px 1px 33px 3px rgba(0, 0, 0, 0.75);
+}
+
+#logForm h2, #signForm h2, #forgotLog h2, #forgotLogSuccess h2 {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+.passLengthOne {
+    display: none;
+    color: red;
+}
+
+.passLengthTwo {
+    display: none;
+    color: red;
+}
+
+.inputBox {
+    margin: 15px 0;
+}
+
+.group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 50px;
+    margin-left: 15%;
+    white-space: nowrap;
+}
+
+input[type="submit"] {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+    transition: all 0.3s ease-in-out;
+}
+input:hover[type="submit"] {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 33px 3px rgba(0, 0, 0, 0.75);
+}
+
+input[type="text"], input[type="password"] {
+    border-radius: 10px;
+    padding-left: 8px;
+    height: 30px;
+}
+
+.sendOut {
+    margin-top: 40px;
+    margin-left: 158px;
+}
+
+#signInOut{
+    margin-top: -33px;
+    margin-left: -190px;
+}
+
+#submitSave {
+    margin-left: 160px;
+    margin-top: 2px;
+}
