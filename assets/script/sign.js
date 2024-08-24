@@ -189,3 +189,54 @@ const submitToRegister = (e) => {
 };
 
 submitRegister.addEventListener('click', submitToRegister);
+
+
+
+const shoppingCart = document.querySelector('.shopping_cart');
+let shopping_BTN;
+
+if (shoppingCart) {
+  shopping_BTN = shoppingCart.firstElementChild;
+}
+
+let isColor = true;
+
+let currentMode = localStorage.getItem('mode');
+
+if (currentMode === 'dark-mode') {
+    body.style.backgroundColor = '#1e1e1e';
+  isColor = false;
+} else if (currentMode === 'light-mode') {
+    body.style.backgroundColor = '';
+  isColor = true;
+}
+
+if (shoppingCart && currentMode === 'dark-mode') {
+  shopping_BTN.firstElementChild.src = "assets/img/shopping_cart_white.webp";
+} else {
+  if (shoppingCart && currentMode === 'light-mode') {
+    shopping_BTN.firstElementChild.src = "assets/img/shopping_cart.png";
+  }
+}
+
+modeToggle.addEventListener('change', () => {
+  if (isColor) {
+    body.classList.remove('light-mode');
+    body.classList.add('dark-mode');
+    localStorage.setItem('mode', 'dark-mode');
+    isColor = false;
+  } else {
+    body.classList.remove('dark-mode');
+    body.classList.add('light-mode');
+    localStorage.setItem('mode', 'light-mode');
+    isColor = true;
+  }
+
+  if (shoppingCart && !isColor) {
+    shopping_BTN.firstElementChild.src = "assets/img/shopping_cart_white.webp";
+  } else {
+    if (shoppingCart && isColor) {
+      shopping_BTN.firstElementChild.src = "assets/img/shopping_cart.png";
+    }
+  }
+});

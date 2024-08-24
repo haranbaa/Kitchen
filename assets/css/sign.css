@@ -132,3 +132,12 @@ input[type="text"], input[type="password"] {
     margin-left: 160px;
     margin-top: 2px;
 }
+
+body.dark-mode a {
+    color: rgb(172, 191, 199);
+}
+
+body.light-mode {
+    background-color: rgb(120, 192, 223);
+    color: #000000;
+}
