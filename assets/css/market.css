@@ -131,7 +131,7 @@ label:hover {
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: box-shadow 0.3s, transform 0.3s;
+    transition: all 0.5s linear;
 }
 
 .card:hover {
@@ -146,6 +146,7 @@ label:hover {
     border: 1.5px black solid;
     border-radius: calc(var(--cardWidth));
     margin: 10px calc(var(--cardWidth) / 4);
+    transition: all 0.5s linear;
 }
 
 .img:hover {

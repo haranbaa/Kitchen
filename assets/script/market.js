@@ -154,8 +154,6 @@ function updateCartDisplay() {
     if (cartButton) {
         const cartQuantity = basked.reduce((acc, item) => acc + (item.quantity || 0), 0);
         cartButton.setAttribute("data-quantity", cartQuantity);
-    } else {
-        console.error("Cart button not found!");
     }
 }
 
@@ -220,6 +218,8 @@ filterEventListener(drinks, "drinks");
 
 const reloadPage = document.querySelector(".filterClear");
 reloadPage.addEventListener("click", (e) => {
-	console.log("clicked");
 	window.location.reload();
 });
+
+const cartQuantity = document.querySelector('.cart-button');
+console.log(cartQuantity.value);
