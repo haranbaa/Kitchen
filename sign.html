@@ -26,10 +26,11 @@
             <form id="logForm">
                 <h2>Login</h2>
                 <div class="inputBox">
-                    <input type="text" placeholder="Username" class="inputTxt">
+                    <input type="text" placeholder="Username" class="inputTxt" id="name">
                 </div>
                 <div class="inputBox">
-                    <input type="password" placeholder="Password" class="inputTxt">
+                    <input type="password" placeholder="Password" class="inputTxt" id="password">
+                    <p class="userDataTxt">Username or Password not found</p>
                 </div>
                 <div class="inputBox group">
                     <a href="#" id="signupForget">Forgot Password</a>
@@ -68,7 +69,8 @@
             <form id="forgotLog" style="display: none;">
                 <h2>Registration</h2>
                 <div class="inputBox">
-                    <input type="text" placeholder="Email Address" class="inputTxt">
+                    <input type="text" placeholder="Email Address" class="inputTxt" id="emailForgot">
+                    <p class="userEmailTxt">Email not found</p>
                 </div>
                     <input type="submit" value="Send" class="sendOut" id="submitForgot">
                     <a href="#" id="signInOut">Log In</a>
@@ -79,11 +81,11 @@
                 <h2>New Password</h2>
                 <div class="inputBox">
                     <div class="inputBox">
-                        <input type="password" placeholder="Create Password"  class="passwordOne inputTxt" >
+                        <input type="password" placeholder="Create Password"  class="passwordOne inputTxt" id="passwordForgot">
                         <p class="passLengthOne">At least 8 characters</p>
                     </div>
                     <div class="inputBox">
-                        <input type="password" placeholder="Confirm Password"  class="passwordTwo inputTxt" >
+                        <input type="password" placeholder="Confirm Password"  class="passwordTwo inputTxt" id="passwordForgotTwo">
                         <p class="passLengthTwo">Must be equal</p>
                     </div>
                     <input type="submit" value="Save" class="sendSave" id="submitSave">

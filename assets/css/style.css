@@ -649,12 +649,9 @@ header {
     background-color: orange;
 }
 
-.profile {
-    margin: 0 10px;
-    color:  #5d176b;
-    color:  #702619;
-    color:  #12595c;
-    color:  #19704c;
-    color:  #1e1e1e;
+.signIn {
+    margin-right: 10px;
 }
-
+.profile {
+    margin-right: 10px;
+}

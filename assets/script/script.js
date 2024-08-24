@@ -104,3 +104,31 @@ testimonials.forEach((testimonial, index) => {
     });
   });
 });
+
+
+//log in and log out button
+const logIn = document.getElementById('signIn');
+const logOut = document.getElementById('signOut');
+const profileBtn = document.querySelector('.profile');;
+
+let userLogIn = localStorage.getItem('logIn');
+
+if(logIn && logOut) {
+  if (userLogIn === 'true') {
+    logIn.style.display = 'none';
+    logOut.style.display = 'inline-block';
+    profileBtn.style.display = 'inline-block';
+  } else {
+    logIn.style.display = 'inline-block';
+    logOut.style.display = 'none';
+    profileBtn.style.display = 'none';
+  }
+  
+  logOut.addEventListener('click', () => {
+    localStorage.setItem('logIn', 'false');
+    location.reload();
+  });
+}
+
+
+

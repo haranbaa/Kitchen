@@ -1,3 +1,10 @@
+//prevent user to see sing
+const logIn = localStorage.getItem("logIn");
+
+if (logIn === "true") {
+    window.location.href = "index.html";
+}
+
 const body = document.querySelector("body");
 const container = document.querySelector(".container");
 
@@ -60,7 +67,7 @@ function changeColor() {
         body.style.backgroundColor = '#19704c'
     }
     if (forgotLog.style.display === "flex") {
-        body.style.backgroundColor = '#702619'
+        body.style.backgroundColor = '#7a7547'
     }
     if (forgotLogSuccess.style.display === "flex") {
         body.style.backgroundColor = '#5d176b'
@@ -70,6 +77,7 @@ function changeColor() {
 
 const signupClick = () => {
     const currentMode = localStorage.getItem("mode");
+    clearInput();
 
     logForm.style.display = "none";
     signForm.style.display = "flex";
@@ -85,6 +93,7 @@ signup.addEventListener("click", signupClick);
 
 const signInClick = () => {
     const currentMode = localStorage.getItem("mode");
+    clearInput();
 
     logForm.style.display = "flex";
     signForm.style.display = "none";
@@ -100,6 +109,7 @@ signIn.addEventListener("click", signInClick);
 
 const signupToForget = () => {
     const currentMode = localStorage.getItem("mode");
+    clearInput();
     
     logForm.style.display = "none";
     signForm.style.display = "none";
@@ -107,7 +117,7 @@ const signupToForget = () => {
     forgotLogSuccess.style.display = "none";
         
     if (currentMode === "light-mode") {
-        body.style.backgroundColor = '#702619';
+        body.style.backgroundColor = '#7a7547';
     }
 };
 
@@ -115,6 +125,7 @@ signupForget.addEventListener("click", signupToForget);
 
 const signToOut = () => {
     const currentMode = localStorage.getItem("mode");
+    clearInput();
     
     logForm.style.display = "flex";
     signForm.style.display = "none";
@@ -127,22 +138,6 @@ const signToOut = () => {
 };
 
 signInOut.addEventListener("click", signToOut);
-
-const submitToNewPassword = (e) => {
-    const currentMode = localStorage.getItem("mode");
-    
-    e.preventDefault(); // to work
-    logForm.style.display = "none";
-    signForm.style.display = "none";
-    forgotLog.style.display = "none";
-    forgotLogSuccess.style.display = "flex";
-        
-    if (currentMode === "light-mode") {
-        body.style.backgroundColor = '#5d176b';
-    }
-};
-
-submitForgot.addEventListener("click", submitToNewPassword);
 
 //password checker
 passwordOne.forEach((pw1, index) => {
@@ -176,24 +171,116 @@ passwordTwo.forEach((pw2, index) => {
 const submitToRegister = (e) => {
     e.preventDefault();
 
-    const userName = document.querySelector(".userName").value;
-    const emailName = document.querySelector(".emailName").value;
+    const pw1 = passwordOne[0];
+    const pw2 = passwordTwo[0];
 
     if (
-        passwordOne.value !== passwordTwo.value ||
-        passwordOne.value.length < 8 ||
-        passwordTwo.value.length < 8
+        pw1.value !== pw2.value ||
+        pw1.value.length < 8 ||
+        pw2.value.length < 8
     ) {
         return;
     }
 
-    console.log("yes");
+    const userNameB = document.querySelector(".userName");
+    const emailB = document.querySelector(".emailName");
+    const userName = document.querySelector(".userName").value;
+    const email = document.querySelector(".emailName").value;
 
-  // localStorage.setItem('username', userName);
-  // localStorage.setItem('email', emailName);
-  // localStorage.setItem('password', passwordOne);
+    if (!email) {
+        emailB.style.borderColor = "red";
+        return;
+    } else {
+        emailB.style.borderColor = "";
+    }
+    if (!userName) {
+        userNameB.style.borderColor = "red";
+        return;
+    } else {
+        userNameB.style.borderColor = '';
+    }
 
-  // console.log('Data saved to localStorage:', { userName, emailName ,passwordOne });
+    console.log( `${userName} ${email} ${pw1.value} ${pw2.value}`);
+
+    const shippingInfo = {
+        userName,
+        email,
+        passwordOne: pw1.value,
+        passwordTwo: pw2.value
+    };
+    localStorage.setItem("shippingInfo", JSON.stringify(shippingInfo));
+  
+    return shippingInfo;
 };
 
 submitRegister.addEventListener("click", submitToRegister);
+
+const submitToLogin = (e) => {
+    e.preventDefault();
+    const userData = JSON.parse(localStorage.getItem("shippingInfo"));
+    const enteredUsername = document.getElementById("name").value;
+    const enteredPassword = document.getElementById("password").value;
+    const userDataTxt = document.querySelector('.userDataTxt');
+
+    if (userData) {
+        if (enteredUsername === userData.userName && enteredPassword === userData.passwordOne) {
+            localStorage.setItem('logIn', 'true');
+            window.location.href = 'index.html';
+            userDataTxt.style.display = "none";
+            inputTxt[0].style.borderColor = "";
+            inputTxt[1].style.borderColor = "";
+        } else {
+            userDataTxt.style.display = "block";
+            inputTxt[0].style.borderColor = "red";
+            inputTxt[1].style.borderColor = "red";
+        }
+    }
+};
+
+submitLogIn.addEventListener("click", submitToLogin);
+
+const submitToNewPassword = (e) => {
+    e.preventDefault();
+
+    const userData = JSON.parse(localStorage.getItem("shippingInfo"));
+    const enteredEmailA = document.getElementById("emailForgot");
+    const enteredEmail = document.getElementById("emailForgot").value;
+    const userDataTxt = document.querySelector('.userEmailTxt');
+    userDataTxt.style.display = "block";
+
+    if (userData) {
+        if (enteredEmail === userData.email) {
+            userDataTxt.style.display = "none";
+            enteredEmailA.style.borderColor = "";
+            forgotLog.style.display = "none";
+            forgotLogSuccess.style.display = "flex";
+        } else {
+            userDataTxt.style.display = "block";
+            enteredEmailA.style.borderColor = "red";
+        }
+    }
+    clearInput();
+};
+
+submitForgot.addEventListener("click", submitToNewPassword);
+
+const submitToSave = (e) => {
+    e.preventDefault();
+
+    const userData = JSON.parse(localStorage.getItem("shippingInfo"));
+    const enteredPassword = document.getElementById("passwordForgot").value;
+    const enteredPasswordTwo = document.getElementById("passwordForgotTwo").value;
+
+    if (userData) {
+        if (enteredPassword === enteredPasswordTwo && enteredPassword.length >= 8) {
+            userData.passwordOne = enteredPassword;
+            userData.passwordTwo = enteredPasswordTwo;
+            localStorage.setItem("shippingInfo", JSON.stringify(userData));
+            localStorage.setItem('logIn', 'true');
+            window.location.href = 'index.html';
+        }
+    }
+    clearInput();
+}
+
+submitSave.addEventListener("click", submitToSave);

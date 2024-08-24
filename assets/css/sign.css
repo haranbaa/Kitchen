@@ -52,6 +52,10 @@ a:hover {
     border: 1px rgba(184, 184, 184, 0.466) solid;
 }
 
+#logForm {
+    height: 360px;
+}
+
 #signForm {
     width: 350px;
     height: 510px;
@@ -59,7 +63,7 @@ a:hover {
 
 #forgotLog {
     width: 350px;
-    height: 250px;
+    height: 265px;
 }
 #forgotLogSuccess {
     width: 350px;
@@ -140,4 +144,11 @@ body.dark-mode a {
 body.light-mode {
     background-color: #19704c;
     color: #000000;
+}
+
+.userDataTxt, .userEmailTxt {
+    display: none;
+    color: red;
+    font-size: 14px;
+    text-align: center;
 }
