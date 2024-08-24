@@ -181,6 +181,7 @@ label:hover {
     display: flex;
     align-items: center;
     border: none;
+    border-radius: 15px;
     background-color: orange;
 }
 
@@ -194,6 +195,8 @@ label:hover {
     transform: translateX(30px);
     color: #fff;
     font-weight: 600;
+    position: relative;
+    left: 25px;
 }
 
 .addItem .button__icon {
@@ -204,6 +207,7 @@ label:hover {
     background-color: #0066cc;
     display: flex;
     align-items: center;
+    border-radius: 15px;
     justify-content: center;
 }
 
