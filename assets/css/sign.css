@@ -141,11 +141,6 @@ body.dark-mode a {
     color: rgb(172, 191, 199);
 }
 
-body.light-mode {
-    background-color: #19704c;
-    color: #000000;
-}
-
 .userDataTxt, .userEmailTxt {
     display: none;
     color: red;

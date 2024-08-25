@@ -1,4 +1,3 @@
-//prevent user to see sing
 const logIn = localStorage.getItem("logIn");
 
 if (logIn === "true") {
@@ -34,6 +33,20 @@ const modeToggle = document.getElementById("modeToggle");
 
 const inputTxt = document.querySelectorAll(".inputTxt");
 
+let logFormOn = logForm.style.display = "flex";
+let logFormOff = logForm.style.display = "none";
+let signOn = signForm.style.display = "flex";
+let signOff = signForm.style.display = "none";
+let forgotLogOn = forgotLog.style.display = "flex";
+let forgotLogOff = forgotLog.style.display = "none";
+let forgotLogSuccessOn = forgotLogSuccess.style.display = "flex";
+let forgotLogSuccessOff = forgotLogSuccess.style.display = "none";
+
+logForm.style.display = "flex";
+signOff;
+forgotLogOff;
+forgotLogSuccessOff;
+
 function clearInput() {
     for (let i of inputTxt) {
         i.value = "";
@@ -42,38 +55,33 @@ function clearInput() {
 
 clearInput();
 
-let isColor = true;
+const currentMode = localStorage.getItem("mode");
 
-function changeColorLoad(){
-    if (isColor) {
-        body.style.backgroundColor = '';
-        isColor = false;
-    } else {
-        changeColor();
-        isColor = true;
-    }
+if (currentMode === "dark-mode") {
+    body.style.backgroundColor = '#121212';
+    modeToggle.checked = true;
+} else if (currentMode === "light-mode") {
+    body.style.backgroundColor = '#19704c';
+    modeToggle.checked = false;
 }
-changeColorLoad();
 
-modeToggle.addEventListener('change', () => {
-    changeColorLoad();
+modeToggle.addEventListener("click", () => {
+    if (modeToggle.checked) {
+        body.style.backgroundColor = '#121212';
+        localStorage.setItem("mode", "dark-mode");
+    }
+    else {
+        if (logForm.style.display === "flex") {
+            body.style.backgroundColor = '#19704c';
+        } else if (signForm.style.display === "flex") {
+            body.style.backgroundColor = '#12595c';
+        } else if (forgotLog.style.display === "flex") {
+            body.style.backgroundColor = '#7a7547';
+        } else {
+            body.style.backgroundColor = '#121212';
+        }
+    }
 });
-
-function changeColor() {
-    if (signForm.style.display === "flex") { 
-        body.style.backgroundColor = '#12595c'
-    }
-    if (logForm.style.display === "flex") {
-        body.style.backgroundColor = '#19704c'
-    }
-    if (forgotLog.style.display === "flex") {
-        body.style.backgroundColor = '#7a7547'
-    }
-    if (forgotLogSuccess.style.display === "flex") {
-        body.style.backgroundColor = '#5d176b'
-    }
-    isColor = true;
-}
 
 const signupClick = () => {
     const currentMode = localStorage.getItem("mode");
