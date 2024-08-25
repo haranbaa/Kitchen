@@ -47,8 +47,10 @@
                     <input type="text" placeholder="Username" class="userName inputTxt" >
                 </div>
                 <div class="inputBox">
-                    <input type="text" placeholder="Email Address" class="emailName inputTxt"  >
+                    <input type="email" placeholder="Email Address" class="emailName inputTxt email" >
                 </div>
+                <p class="userEmailExist">Email already exists</p>
+                <p class="userEmailWrongTxt">Invalid email address</p>
                 <div class="inputBox">
                     <input type="password" placeholder="Create Password"  class="passwordOne inputTxt" >
                     <p class="passLengthOne">At least 8 characters</p>
@@ -69,7 +71,7 @@
             <form id="forgotLog">
                 <h2>Registration</h2>
                 <div class="inputBox">
-                    <input type="text" placeholder="Email Address" class="inputTxt" id="emailForgot">
+                    <input type="email" placeholder="Email Address" class="email inputTxt" id="emailForgot">
                     <p class="userEmailTxt">Email not found</p>
                 </div>
                     <input type="submit" value="Send" class="sendOut" id="submitForgot">

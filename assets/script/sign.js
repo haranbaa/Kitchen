@@ -170,36 +170,55 @@ passwordTwo.forEach((pw2, index) => {
 const submitToRegister = (e) => {
     e.preventDefault();
 
-    const pw1 = passwordOne[0];
-    const pw2 = passwordTwo[0];
-
-    if (
-        pw1.value !== pw2.value ||
-        pw1.value.length < 8 ||
-        pw2.value.length < 8
-    ) {
-        return;
-    }
+    const MIN_USERNAME_LENGTH = 3;
+    const MIN_PASSWORD_LENGTH = 8;
+    const MIN_DOMAIN_LENGTH = 3;
+    const MIN_EXTENSION_LENGTH = 2;
 
     const userNameB = document.querySelector(".userName");
     const emailB = document.querySelector(".emailName");
-    const userName = document.querySelector(".userName").value;
-    const email = document.querySelector(".emailName").value;
+    const userEmailExist = document.querySelector('.userEmailExist');
+    const userEmailWrongTxt = document.querySelector('.userEmailWrongTxt');
+    const pw1 = document.querySelector(".passwordOne");
+    const pw2 = document.querySelector(".passwordTwo");
 
-    if (!email) {
-        emailB.style.borderColor = "red";
-        return;
-    } else {
-        emailB.style.borderColor = "";
-    }
-    if (!userName) {
+    const userName = userNameB.value.trim();
+    const email = emailB.value.trim();
+    const pw1Value = pw1.value;
+    const pw2Value = pw2.value;
+    const userData = JSON.parse(localStorage.getItem("shippingInfo"));
+
+    userNameB.style.borderColor = "";
+    emailB.style.borderColor = "";
+    pw1.style.borderColor = "";
+    pw2.style.borderColor = "";
+    userEmailExist.style.display = "none";
+    userEmailWrongTxt.style.display = "none";
+
+    if (userName.length < MIN_USERNAME_LENGTH || !/^[a-zA-Z]+$/.test(userName)) {
         userNameB.style.borderColor = "red";
         return;
-    } else {
-        userNameB.style.borderColor = '';
     }
 
-    console.log( `${userName} ${email} ${pw1.value} ${pw2.value}`);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        emailB.style.borderColor = "red";
+        userEmailWrongTxt.style.display = "block";
+        return;
+    }
+
+    if (userData && email === userData.email) {
+        emailB.style.borderColor = "red";
+        userEmailExist.style.display = "block";
+        return;
+    }
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (pw1Value !== pw2Value || !passwordRegex.test(pw1Value)) {
+        pw1.style.borderColor = "red";
+        pw2.style.borderColor = "red";
+        return;
+    }
 
     const shippingInfo = {
         userName,
@@ -207,13 +226,15 @@ const submitToRegister = (e) => {
         passwordOne: pw1.value,
         passwordTwo: pw2.value
     };
+
     localStorage.setItem("shippingInfo", JSON.stringify(shippingInfo));
-    
+
     localStorage.setItem('logIn', 'true');
     window.location.href = "index.html";
-
+    
     return shippingInfo;
 };
+
 
 submitRegister.addEventListener("click", submitToRegister);
 
@@ -286,3 +307,6 @@ const submitToSave = (e) => {
 }
 
 submitSave.addEventListener("click", submitToSave);
+
+
+

@@ -48,22 +48,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadShippingDetails() {
     const userData = JSON.parse(localStorage.getItem("shippingInfo"));
-    if (userData) {
-      document.getElementById("name").value = userData.userName || "";
-      document.getElementById("email").value = userData.email || "";
-      document.getElementById("region").value = userData.region || "";
-      document.getElementById("city").value = userData.city || "";
-      document.getElementById("zip").value = userData.zip || "";
-      document.getElementById("street").value = userData.street || "";
-      document.getElementById("street-number").value = userData.streetNumber || "";
-    } else {
-      document.getElementById("name").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("region").value = "";
-      document.getElementById("city").value = "";
-      document.getElementById("zip").value = "";
-      document.getElementById("street").value = "";
-      document.getElementById("street-number").value = "";
+    const isLogin = localStorage.getItem("logIn");
+    if (isLogin === "true") {
+      if (userData) {
+        document.getElementById("name").value = userData.userName || "";
+        document.getElementById("email").value = userData.email || "";
+        document.getElementById("region").value = userData.region || "";
+        document.getElementById("city").value = userData.city || "";
+        document.getElementById("zip").value = userData.zip || "";
+        document.getElementById("street").value = userData.street || "";
+        document.getElementById("street-number").value = userData.streetNumber || "";
+      } else {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("region").value = "";
+        document.getElementById("city").value = "";
+        document.getElementById("zip").value = "";
+        document.getElementById("street").value = "";
+        document.getElementById("street-number").value = "";
+      }
     }
   }
 
@@ -119,9 +122,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         //fix later
         removeBtn.addEventListener("click", (event) => {
-            const index = parseInt(event.currentTarget.getAttribute("data-index")); //currentTarget < target
-            console.log(index);
-            removeLine(index, newDiv);
+          const index = parseInt(
+            event.currentTarget.getAttribute("data-index")
+          ); //currentTarget < target
+          console.log(index);
+          removeLine(index, newDiv);
         });
       }
     }
@@ -129,12 +134,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function removeLine(index, element) {
     if (index > -1) {
-        basked.splice(index, 1);
-        localStorage.setItem("basked", JSON.stringify(basked));
-        element.remove();
-        subtotal = 0;
-        orderSummaryFnc();
-        totalPrice();
+      basked.splice(index, 1);
+      localStorage.setItem("basked", JSON.stringify(basked));
+      element.remove();
+      subtotal = 0;
+      orderSummaryFnc();
+      totalPrice();
     }
   }
 
