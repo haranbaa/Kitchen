@@ -33,19 +33,11 @@ const modeToggle = document.getElementById("modeToggle");
 
 const inputTxt = document.querySelectorAll(".inputTxt");
 
-let logFormOn = logForm.style.display = "flex";
-let logFormOff = logForm.style.display = "none";
-let signOn = signForm.style.display = "flex";
-let signOff = signForm.style.display = "none";
-let forgotLogOn = forgotLog.style.display = "flex";
-let forgotLogOff = forgotLog.style.display = "none";
-let forgotLogSuccessOn = forgotLogSuccess.style.display = "flex";
-let forgotLogSuccessOff = forgotLogSuccess.style.display = "none";
 
 logForm.style.display = "flex";
-signOff;
-forgotLogOff;
-forgotLogSuccessOff;
+signForm.style.display = "none";
+forgotLog.style.display = "none";
+forgotLogSuccess.style.display = "none";
 
 function clearInput() {
     for (let i of inputTxt) {
