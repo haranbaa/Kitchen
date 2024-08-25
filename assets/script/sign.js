@@ -33,7 +33,6 @@ const modeToggle = document.getElementById("modeToggle");
 
 const inputTxt = document.querySelectorAll(".inputTxt");
 
-
 logForm.style.display = "flex";
 signForm.style.display = "none";
 forgotLog.style.display = "none";
@@ -167,9 +166,6 @@ passwordTwo.forEach((pw2, index) => {
         }
     });
 });
-
-//after register submit user need to log in with used data from register and brind to home page
-
 
 const submitToRegister = (e) => {
     e.preventDefault();
